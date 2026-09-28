@@ -2,8 +2,16 @@
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
+
+    <!-- language features -->
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Code quality -->
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <EnableNetAnalyzers>true</EnableNetAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>
