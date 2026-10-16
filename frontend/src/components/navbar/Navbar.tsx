@@ -1,10 +1,16 @@
-import Button from '../Button'
+// import Button from '../Button'
 import Searchbar from '../Searchbar';
 import NavbarButton from './NavbarButton';
-import logo from '../../assets/images/logo.png';
 import { Link } from "react-router-dom";
 
+import logo from '../../assets/images/logo.png';
+import Avatar from '../../assets/images/avatar.png';
+
+import { useState } from 'react';
+
 export default function Navbar(){
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
     return(
         <>
             <nav className='flex items-center justify-between px-4 py-2 bg-olive-600'>
@@ -19,7 +25,13 @@ export default function Navbar(){
 
                 <div className='flex items-center gap-3'>
                     <Searchbar />
-                    <Button name=''/>
+                    {isLoggedIn ? 
+                        <button>
+                            <img className='h-8' src={Avatar} alt="avatar" />
+                        </button>
+                        :
+                        <button onClick={() => setIsLoggedIn(true)}>Log in</button>
+                    }
                 </div>
             </nav>
         </>
