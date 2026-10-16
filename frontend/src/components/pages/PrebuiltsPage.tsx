@@ -50,7 +50,7 @@ export default function PrebuiltsPage(){
                     </button>
                 </div>
 
-                <div className="w-6xl h-120 outline-1 mx-auto">
+                <div className="w-6xl h-120 outline-1 mx-auto rounded-lg">
                     {renderPage()}
                 </div>
             </div>
