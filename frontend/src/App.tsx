@@ -1,9 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar'
-import Home from './components/pages/HomePage';
-import CreatePage from './components/pages/CreatePage';
-import Prebuilts from './components/pages/PrebuiltsPage';
-import Community from './components/pages/CommunityPage';
+import Home from './Pages/Home';
+import Create from './Pages/Create';
+import Prebuilts from './Pages/Prebuilt';
+import Community from './Pages/Community';
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/create" element={<CreatePage />} />
+          <Route path="/create" element={<Create />} />
           <Route path="/prebuilts" element={<Prebuilts />} />
           <Route path="/community" element={<Community />} />
         </Routes>

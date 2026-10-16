@@ -1,15 +1,15 @@
 import { useState } from "react";
-import PreBuiltCategory from "../prebuilt/PreBuiltCategory";
+import PreBuiltCategory from "../components/prebuilt/PreBuiltCategory";
 
-import AllPreBuilts from '../prebuilt/pages/AllPreBuilts'
-import GamingPreBuilts from "../prebuilt/pages/GamingPreBuilts";
-import WorkstationPreBuilts from "../prebuilt/pages/WorkstationPreBuilts";
-import OfficePreBuilts from "../prebuilt/pages/OfficePreBuilts";
-import BudgetPreBuilts from "../prebuilt/pages/BudgetPreBuilts";
+import AllPreBuilts from '../components/prebuilt/pages/AllPreBuilts'
+import GamingPreBuilts from "../components/prebuilt/pages/GamingPreBuilts";
+import WorkstationPreBuilts from "../components/prebuilt/pages/WorkstationPreBuilts";
+import OfficePreBuilts from "../components/prebuilt/pages/OfficePreBuilts";
+import BudgetPreBuilts from "../components/prebuilt/pages/BudgetPreBuilts";
 
 type pageType = 'all' | 'gaming' | 'workstation' | 'office' | 'budget';
 
-export default function PrebuiltsPage(){
+export default function Prebuilts(){
     const [currentPage, setCurrentPage] = useState<pageType>("all");
 
     const renderPage = () => {
