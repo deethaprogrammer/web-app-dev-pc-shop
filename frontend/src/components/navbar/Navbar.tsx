@@ -4,12 +4,12 @@ import NavbarButton from './NavbarButton';
 import { Link } from "react-router-dom";
 
 import logo from '../../assets/images/logo.png';
-import Avatar from '../../assets/images/avatar.png';
+import DropdownMenu from './DropdownMenu';
 
-import { useState } from 'react';
+
 
 export default function Navbar(){
-    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
 
     return(
         <>
@@ -25,13 +25,7 @@ export default function Navbar(){
 
                 <div className='flex items-center gap-3'>
                     <Searchbar />
-                    {isLoggedIn ? 
-                        <button>
-                            <img className='h-8' src={Avatar} alt="avatar" />
-                        </button>
-                        :
-                        <button onClick={() => setIsLoggedIn(true)}>Log in</button>
-                    }
+                    <DropdownMenu />
                 </div>
             </nav>
         </>
