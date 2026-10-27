@@ -1,0 +1,53 @@
+import avatar from "../../assets/images/avatar.png"
+import { useState } from "react";
+import { NavLink } from "react-router-dom";
+
+export default function DropdownMenu(){
+    const [MenuIsOpen, setIsOpen] = useState(false);
+
+    return(
+        <div className="relative inline-block">
+            <button 
+            className="rounded-full p-2 transition-colors hover:bg-olive-700 cursor-pointer" 
+            onClick={() => setIsOpen(!MenuIsOpen) }
+            >
+                <img src= {avatar} alt="avatar" className="h-8"/>
+            </button>
+
+            {MenuIsOpen && (
+                <div className="absolute right-0 top-full z-50 mt- w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-4 justify-end">
+                    <button className="text-white">
+                        <MenuButton title="User profile" page="/UserProfile" />
+                    </button>
+                    
+                    <button className="text-white">
+                        <MenuButton title="My builds" page="/MyBuilds" />
+                    </button>
+
+                    <button className="text-white">
+                        <MenuButton title="Log in/out" page="/Login" />
+                    </button>
+                </div>
+            )}
+        </div>
+    )
+}
+
+type MenuButtonProps = {title: string; page: string;};
+
+function MenuButton({ title, page }: MenuButtonProps) {
+    return (
+        <NavLink
+        to={page}
+        className={({ isActive }) =>
+            `px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+            isActive
+                ? "bg-olive-700 text-white"
+                : "text-olive-50 hover:bg-olive-600 hover:text-white"
+            }`
+        }
+        >
+        {title}
+        </NavLink>
+  );
+}
