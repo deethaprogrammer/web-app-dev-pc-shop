@@ -16,7 +16,7 @@ export default function DropdownMenu(){
 
         return () => document.removeEventListener("pointerdown", handleClickOutside);
     }, []);
-
+    const close = () => setmenuIsOpen(false);
 
     return(
         <div ref={dropdownRef} className="relative inline-block">
@@ -29,21 +29,22 @@ export default function DropdownMenu(){
 
             {menuIsOpen && (
                 <div className="absolute right-0 top-full z-50 w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-1">
-                    <MenuButton title="User profile" page="/UserProfile" />
-                    <MenuButton title="My builds" page="/MyBuilds" />
-                    <MenuButton title="Log in/out" page="/Login" />
+                    <MenuButton title="User profile" page="/UserProfile" onClick={close} />
+                    <MenuButton title="My builds" page="/MyBuilds" onClick={close} />
+                    <MenuButton title="Log in/out" page="/Login" onClick={close} />
                 </div>
             )}
         </div>
     )
 }
 
-type MenuButtonProps = {title: string; page: string;};
+type MenuButtonProps = {title: string; page: string; onClick?: () => void};
 
-function MenuButton({ title, page }: MenuButtonProps) {
+function MenuButton({ title, page, onClick }: MenuButtonProps) {
     return (
         <NavLink
         to={page}
+        onClick={onClick}
         className={({ isActive }) =>
             `px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
             isActive
