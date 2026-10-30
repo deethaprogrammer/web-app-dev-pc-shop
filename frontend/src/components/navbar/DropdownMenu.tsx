@@ -15,7 +15,7 @@ export default function DropdownMenu(){
             </button>
 
             {MenuIsOpen && (
-                <div className="absolute right-0 top-full z-50 mt- w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-4 justify-end">
+                <div className="absolute right-0 top-full z-50 w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-4 justify-end">
                     <button className="text-white">
                         <MenuButton title="User profile" page="/UserProfile" />
                     </button>
