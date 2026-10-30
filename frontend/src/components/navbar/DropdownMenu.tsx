@@ -1,12 +1,25 @@
 import avatar from "../../assets/images/avatar.png"
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function DropdownMenu(){
     const [MenuIsOpen, setIsOpen] = useState(false);
+    const dropdownRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        function handleClickOutside(event: MouseEvent) {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+                setIsOpen(false)
+            }
+        }
+        document.addEventListener("mousedown", handleClickOutside)
+
+        return () => document.removeEventListener("mousedown", handleClickOutside);
+    }, []);
+
 
     return(
-        <div className="relative inline-block">
+        <div ref={dropdownRef} className="relative inline-block">
             <button 
             className="rounded-full p-2 transition-colors hover:bg-olive-700 cursor-pointer" 
             onClick={() => setIsOpen(!MenuIsOpen) }
