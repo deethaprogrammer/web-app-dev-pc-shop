@@ -3,26 +3,27 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function DropdownMenu(){
-    const [menuIsOpen, setmenuIsOpen] = useState(false);
+    const [menuIsOpen, setMenuIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-
+    
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-                setmenuIsOpen(false)
+                setMenuIsOpen(false)
             }
         }
         document.addEventListener("pointerdown", handleClickOutside)
 
         return () => document.removeEventListener("pointerdown", handleClickOutside);
     }, []);
-    const close = () => setmenuIsOpen(false);
+    const close = () => setMenuIsOpen(false);
 
     return(
         <div ref={dropdownRef} className="relative inline-block">
             <button 
-            className="rounded-full p-2 transition-colors hover:bg-olive-700 cursor-pointer" 
-            onClick={() => setmenuIsOpen(!menuIsOpen) }
+            className="rounded-full p-2 transition-colors hover:bg-olive-700 cursor-pointer"
+            
+            onClick={() => setMenuIsOpen(prev => !prev)}
             >
                 <img src= {avatar} alt="avatar" className="h-8"/>
             </button>
