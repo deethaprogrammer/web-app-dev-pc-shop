@@ -28,18 +28,10 @@ export default function DropdownMenu(){
             </button>
 
             {MenuIsOpen && (
-                <div className="absolute right-0 top-full z-50 w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-4 justify-end">
-                    <button className="text-white">
-                        <MenuButton title="User profile" page="/UserProfile" />
-                    </button>
-                    
-                    <button className="text-white">
-                        <MenuButton title="My builds" page="/MyBuilds" />
-                    </button>
-
-                    <button className="text-white">
-                        <MenuButton title="Log in/out" page="/Login" />
-                    </button>
+                <div className="absolute right-0 top-full z-50 w-34 rounded-2xl bg-olive-500 p-3 flex flex-col gap-1 justify-end">
+                    <MenuButton title="User profile" page="/UserProfile" />
+                    <MenuButton title="My builds" page="/MyBuilds" />
+                    <MenuButton title="Log in/out" page="/Login" />
                 </div>
             )}
         </div>
