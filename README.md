@@ -1,37 +1,30 @@
 # PC Webshop
 
-## Run it
+## Dependencies
+- [Docker](https://www.docker.com/get-started/)
+- A Editor of your choice
 
-Requirements: [Docker Desktop](https://www.docker.com/products/docker-desktop/) (running) and VS Code.
-
-1. Open the project folder in VS Code and open a terminal (**Terminal → New Terminal**).
-
-2. Copy the example env file:
-
-   ```bash
-   cp .env.example .env
-   ```
-
-3. Open `.env` and set your own database password:
-
-   ```env
-   POSTGRES_PASSWORD=change-me
-   ```
-
+## Getting set up
+1. Open the project in your preferred editor
+2. Copy the ```.env.example``` file to a own special ```.env``` file
+3. Open `.env` and set your own values
 4. Build and start everything:
-
-   ```bash
-   docker compose up -d --build
-   ```
-
+    ```bash
+    docker compose up -d --build
+    ```
 5. Open the app:
-   - Frontend: http://localhost:3000
-   - Backend: http://localhost:5124
+   - Frontend: http://localhost:${FRONTEND_PORT}
+   - Backend: http://localhost:${BACKEND_PORT}
 
 (Use the ports from your `.env` if you changed them.)
 
-## Stop it
+## Stopping the containers
 
+to stop the container you can run the following command:
 ```bash
+# to keep the volume saved:
 docker compose down
+
+# to also delete the volume
+docker compose down -v
 ```
