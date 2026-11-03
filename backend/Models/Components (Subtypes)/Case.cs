@@ -1,10 +1,9 @@
-using backend.models.Base;
-using backend.models.FormFactor;
+﻿namespace PcShop.Models.Components;
 
+using PcShop.Models.Base;
+using PcShop.Models.FormFactor;
 
-namespace backend.models.Components;
-
-[Table("Case")] 
+[Table("Case")]
 public class Case : PcComponent
 {
     public Case()

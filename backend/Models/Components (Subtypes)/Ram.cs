@@ -1,8 +1,8 @@
-using backend.models.Base;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
 
-[Table("RAM")] 
+[Table("RAM")]
 public class RAM : PcComponent
 {
     public RAM()

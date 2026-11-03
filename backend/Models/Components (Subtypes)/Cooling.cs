@@ -1,8 +1,8 @@
-using backend.models.Base;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
 
-[Table("Cooling")] 
+[Table("Cooling")]
 public class Cooling : PcComponent
 {
     public Cooling()

@@ -1,4 +1,4 @@
-namespace backend.models.Base;
+﻿namespace PcShop.Models.Base;
 
 [Table("PcComponent")]
 public abstract class PcComponent

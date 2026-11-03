@@ -1,16 +1,16 @@
-using backend.models.Base;
-using backend.models.FormFactor;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
+using Models.FormFactor;
 
-[Table("Motherboard")] 
+[Table("Motherboard")]
 public class Motherboard : PcComponent
 {
     public Motherboard()
     {
         ComponentType = "Motherboard";
     }
-    public Guid FormFactorId { get; set; } 
+    public Guid FormFactorId { get; set; }
 
     public BoardFormFactor FormFactor { get; set; } = null!;
 

@@ -1,4 +1,4 @@
-namespace backend.models.Ports;
+﻿namespace PcShop.Models.Ports;
 
 [Table("Port")]
 public class Port
@@ -6,7 +6,7 @@ public class Port
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid PortId { get; set; }
-    
+
     [Required]
     public string Type { get; set; } = null!;
 

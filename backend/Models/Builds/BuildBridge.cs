@@ -1,6 +1,7 @@
-using backend.models.Orders;
+﻿namespace PcShop.Models.Builds;
 
-namespace backend.models.Builds;
+using Models.Orders;
+
 
 [Table("BuildBridge")]
 [PrimaryKey(nameof(BuildId), nameof(OrderId))]

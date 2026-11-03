@@ -1,12 +1,13 @@
-using backend.models.Base;
-using backend.models.Builds;
-using backend.models.Components;
-using backend.models.FormFactor;
-using backend.models.Identity;
-using backend.models.Orders;
-using backend.models.Ports;
+﻿namespace PcShop.Data;
 
-namespace backend.data;
+using Models.Base;
+using Models.Builds;
+using Models.Components;
+using Models.FormFactor;
+using Models.Identity;
+using Models.Orders;
+using Models.Ports;
+
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }

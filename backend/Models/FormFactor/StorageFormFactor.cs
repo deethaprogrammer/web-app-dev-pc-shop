@@ -1,6 +1,6 @@
-using backend.models.Components;
+﻿namespace PcShop.Models.FormFactor;
 
-namespace backend.models.FormFactor;
+using Models.Components;
 
 [Table("StorageFormFactor")]
 public class StorageFormFactor

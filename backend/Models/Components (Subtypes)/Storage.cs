@@ -1,9 +1,9 @@
-using backend.models.Base;
-using backend.models.FormFactor;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
+using Models.FormFactor;
 
-[Table("Storage")] 
+[Table("Storage")]
 public class Storage : PcComponent
 {
     public Storage()

@@ -1,6 +1,6 @@
-using backend.models.Base;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
 
 [Table("Sticker")]
 public class Sticker : PcComponent

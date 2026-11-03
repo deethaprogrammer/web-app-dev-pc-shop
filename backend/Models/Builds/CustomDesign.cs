@@ -1,6 +1,7 @@
-using backend.models.Components;
+﻿namespace PcShop.Models.Builds;
 
-namespace backend.models.Builds;
+using Models.Components;
+
 [Table("CustomDesign")]
 public class CustomDesign
 {

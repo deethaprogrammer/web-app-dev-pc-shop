@@ -1,6 +1,7 @@
-using backend.models.Components;
+﻿namespace PcShop.Models.Ports;
 
-namespace backend.models.Ports;
+using Models.Components;
+
 [Table("PortsBridge")]
 [PrimaryKey(nameof(MotherboardId), nameof(PortId))]
 public class PortsBridge

@@ -1,8 +1,8 @@
-using backend.models.Base;
+﻿namespace PcShop.Models.Components;
 
-namespace backend.models.Components;
+using Models.Base;
 
-[Table("NetworkCard")] 
+[Table("NetworkCard")]
 public class NetworkCard : PcComponent
 {
     public NetworkCard()

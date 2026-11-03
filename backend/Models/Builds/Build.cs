@@ -1,6 +1,7 @@
-using backend.models.Identity;
+﻿namespace PcShop.Models.Builds;
 
-namespace backend.models.Builds;
+using Models.Identity;
+
 [Table("Build")]
 public class Build
 {

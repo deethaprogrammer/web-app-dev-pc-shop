@@ -1,6 +1,7 @@
-using backend.models.Base;
+﻿namespace PcShop.Models.Builds;
 
-namespace backend.models.Builds;
+using Models.Base;
+
 
 [Table("BuildComponentBridge")]
 [PrimaryKey(nameof(BuildId), nameof(ComponentId))]

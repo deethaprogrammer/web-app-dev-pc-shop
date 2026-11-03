@@ -1,6 +1,7 @@
-using backend.models.Identity;
+﻿namespace PcShop.Models.Orders;
 
-namespace backend.models.Orders;
+using Models.Identity;
+
 [Table("Order")]
 public class Order
 {
