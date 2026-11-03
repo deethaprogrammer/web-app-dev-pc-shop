@@ -8,22 +8,26 @@ services:
       - "${DB_PORT}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
+
   backend:
     build:
       context: ./backend
       dockerfile: Dockerfile
-    container_name: backend
+    container_name: webdev-backend
     ports:
-      - "${BACKEND_PORT}:8080"   # host:container, change 5000 if it's also taken
+      - "${BACKEND_PORT}:8080"
     environment:
-      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=pcshop;Username=postgres;Password=${POSTGRES_PASSWORD}
+      ConnectionStrings__DefaultConnection: "Host=db;Port=${DB_PORT};Database=pcshop;Username=${DB_USERNAME};Password=${DB_PASSWORD}"
       ASPNETCORE_ENVIRONMENT: Development   # optional, enables /openapi/v1.json
     restart: unless-stopped
+    depends_on:
+      - db
+
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
-    container_name: frontend
+    container_name: webdev-frontend
     ports:
       - "${FRONTEND_PORT}:3000"
     depends_on:
