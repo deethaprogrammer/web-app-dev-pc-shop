@@ -10,7 +10,11 @@
 3. Open `.env` and set your own values
 4. Build and start everything:
     ```bash
+    # to build everything detached
     docker compose up -d --build
+
+    # if you just want to build one service (example uses frontend)
+    docker compose up -d --build frontend
     ```
 5. Open the app:
    - Frontend: http://localhost:${FRONTEND_PORT}
