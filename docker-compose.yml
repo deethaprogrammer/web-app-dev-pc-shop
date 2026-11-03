@@ -1,0 +1,33 @@
+services:
+  db:
+    image: postgres:18
+    container_name: postgres-webdev
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: backend
+    ports:
+      - "${BACKEND_PORT}:8080"   # host:container, change 5000 if it's also taken
+    environment:
+      ConnectionStrings__DefaultConnection: Host=db;Port=5432;Database=pcshop;Username=postgres;Password=${POSTGRES_PASSWORD}
+      ASPNETCORE_ENVIRONMENT: Development   # optional, enables /openapi/v1.json
+    restart: unless-stopped
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: frontend
+    ports:
+      - "${FRONTEND_PORT}:3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+volumes:
+  postgres_data:
