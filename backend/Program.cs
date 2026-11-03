@@ -47,6 +47,15 @@ public class Program
         if (s_app != null && s_app.Environment.IsDevelopment())
         {
             s_app.MapOpenApi();
+
+            // Serve the interactive Swagger UI
+            s_app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint(
+                    "/openapi/v1.json",
+                    "API v1"
+                );
+            });
         }
     }
 
