@@ -3,9 +3,9 @@ services:
     image: postgres:18
     container_name: postgres-webdev
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD:secret}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-secret}
     ports:
-      - "${DB_PORT:5432}:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql
 
@@ -15,10 +15,10 @@ services:
       dockerfile: Dockerfile
     container_name: webdev-backend
     ports:
-      - "${BACKEND_PORT:8080}:8080"
+      - "${BACKEND_PORT:-8080}:8080"
     environment:
-      ConnectionStrings__DefaultConnection: "Host=db;Port=${DB_PORT:5432};Database=pcshop;Username=${DB_USERNAME:john};Password=${DB_PASSWORD:secret}"
-      ASPNETCORE_ENVIRONMENT: ${ASP_ENVIRONMENT:Development}
+      ConnectionStrings__DefaultConnection: "Host=db;Port=${DB_PORT:-5432};Database=pcshop;Username=${DB_USERNAME:-john};Password=${DB_PASSWORD:-secret}"
+      ASPNETCORE_ENVIRONMENT: ${ASP_ENVIRONMENT:-Development}
     restart: unless-stopped
     depends_on:
       - db
@@ -29,7 +29,7 @@ services:
       dockerfile: Dockerfile
     container_name: webdev-frontend
     ports:
-      - "${FRONTEND_PORT:3000}:3000"
+      - "${FRONTEND_PORT:-3000}:3000"
     depends_on:
       - backend
     restart: unless-stopped
