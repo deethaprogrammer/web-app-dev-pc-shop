@@ -14,6 +14,9 @@
     <EnableNetAnalyzers>true</EnableNetAnalyzers>
     <AnalysisLevel>latest</AnalysisLevel>
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+
+    <!-- Build reliability -->
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
 
   <ItemGroup>
