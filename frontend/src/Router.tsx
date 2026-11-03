@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 
-import Home from './Pages/Home';
-import Create from './Pages/Create';
-import Prebuilts from './Pages/Prebuilt';
-import Community from './Pages/Community';
-import UserProfile from './Pages/UserProfile';
-import MyBuilds from './Pages/MyBuilds';
-import Login from './Pages/Login';
+import Home from '#pages/Home';
+import Create from '#pages/Create';
+import Prebuilts from '#pages/Prebuilt';
+import Community from '#pages/Community';
+import UserProfile from '#pages/UserProfile';
+import MyBuilds from '#pages/MyBuilds';
+import Login from '#pages/Login';
 
 export default function Router()
 {

@@ -1,9 +1,9 @@
-// import Button from '../Button'
-import Searchbar from '../Searchbar';
+// import Button from '#lib/components/Button'
+import Searchbar from '#lib/components/Searchbar';
 import NavbarButton from './NavbarButton';
 import { Link } from "react-router-dom";
 
-import logo from '../../assets/images/logo.png';
+import logo from '#assets/images/logo.png';
 import DropdownMenu from './DropdownMenu';
 
 

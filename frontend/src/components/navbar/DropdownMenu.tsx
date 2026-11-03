@@ -1,11 +1,11 @@
-import avatar from "../../assets/images/avatar.png"
+import avatar from "#assets/images/avatar.png"
 import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function DropdownMenu(){
     const [menuIsOpen, setMenuIsOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
-    
+
     useEffect(() => {
         function handleClickOutside(event: MouseEvent) {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -20,9 +20,9 @@ export default function DropdownMenu(){
 
     return(
         <div ref={dropdownRef} className="relative inline-block">
-            <button 
+            <button
             className="rounded-full p-2 transition-colors hover:bg-olive-700 cursor-pointer"
-            
+
             onClick={() => setMenuIsOpen(prev => !prev)}
             >
                 <img src= {avatar} alt="avatar" className="h-8"/>
