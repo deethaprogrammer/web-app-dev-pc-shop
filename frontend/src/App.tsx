@@ -1,7 +1,16 @@
+import { BrowserRouter } from 'react-router-dom';
+
+import Router from "./Router.tsx";
+
+import Navbar from './components/navbar/Navbar'
+
 export default function App() {
   return (
     <>
-        <h1>hello world</h1>
+      <BrowserRouter>
+        <Navbar />
+        <Router/>
+      </BrowserRouter>
     </>
   )
 }
