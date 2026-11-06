@@ -40,7 +40,6 @@ public class Program
         .WithName("GetWeatherForecast");
 
         s_app.Run();
-
     }
 
     record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
