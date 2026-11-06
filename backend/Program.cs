@@ -1,6 +1,7 @@
 ﻿namespace PcShop;
 
 using Data;
+using Extensions;
 
 public class Program
 {
@@ -13,11 +14,11 @@ public class Program
         s_builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(s_builder.Configuration.GetConnectionString("DefaultConnection")));
 
         s_app = s_builder.Build();
-        await RunMigrations();
-        EnableSwagger();
+
+        await s_app.RunMigrations();
+        s_app.EnableSwagger();
 
         s_app.UseHttpsRedirection();
-
 
         var summaries = new[]
         {
@@ -40,36 +41,6 @@ public class Program
 
         s_app.Run();
 
-    }
-
-    private static void EnableSwagger()
-    {
-        if (s_app != null && s_app.Environment.IsDevelopment())
-        {
-            s_app.MapOpenApi();
-
-            // Serve the interactive Swagger UI
-            s_app.UseSwaggerUI(options =>
-            {
-                options.SwaggerEndpoint(
-                    "/openapi/v1.json",
-                    "API v1"
-                );
-            });
-        }
-    }
-
-    private static async Task RunMigrations()
-    {
-        if (s_app == null)
-        {
-            return;
-        }
-        var scope = s_app.Services.CreateScope();
-        var db = scope.ServiceProvider
-            .GetRequiredService<AppDbContext>();
-
-        await db.Database.MigrateAsync();
     }
 
     record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
