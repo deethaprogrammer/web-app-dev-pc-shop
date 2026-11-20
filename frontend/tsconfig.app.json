@@ -8,6 +8,12 @@
     "allowArbitraryExtensions": true,
     "skipLibCheck": true,
 
+    "paths": {
+      "#lib/*": ["./src/lib/*"],
+      "#assets/*": ["./src/assets/*"],
+      "#pages/*": ["./src/pages/*"]
+    },
+
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
