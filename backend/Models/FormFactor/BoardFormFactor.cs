@@ -3,7 +3,7 @@
 using Models.Components;
 
 [Table("BoardFormFactor")]
-public class BoardFormFactor
+public class BoardFormFactor : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

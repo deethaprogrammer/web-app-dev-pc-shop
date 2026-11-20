@@ -1,0 +1,15 @@
+namespace PcShop.Repositories;
+
+using Models;
+
+public interface IRepository<T> where T : class, IEntity
+{
+    Task<List<T>> GetAllAsync();
+    Task<T?> GetByIdAsync(Guid id);
+
+    void Add(T entity);
+    void Update(T entity);
+    void Delete(T entity);
+
+    Task<int> SaveChangesAsync();
+}
