@@ -1,12 +1,12 @@
 ﻿namespace PcShop.Models.Base;
 
 [Table("PcComponent")]
-public abstract class PcComponent
+public abstract class PcComponent : IEntity
 {
     // unique ID, shared with the subtype table
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid ComponentId { get; set; }
+    public Guid Id { get; set; }
 
     // kind of part, e.g. "CPU", "GPU", "Sticker"
     [Required]
