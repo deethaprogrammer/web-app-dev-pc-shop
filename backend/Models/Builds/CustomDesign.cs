@@ -3,11 +3,11 @@
 using Models.Components;
 
 [Table("CustomDesign")]
-public class CustomDesign
+public class CustomDesign : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid CustomDesignId { get; set; }
+    public Guid Id { get; set; }
 
     public Guid CaseComponentId { get; set; }
     public Case CaseComponent { get; set; } = null!;

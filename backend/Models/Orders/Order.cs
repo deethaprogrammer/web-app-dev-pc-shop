@@ -3,11 +3,11 @@
 using Models.Identity;
 
 [Table("Order")]
-public class Order
+public class Order : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid OrderId { get; set; }
+    public Guid Id { get; set; }
 
     public Guid UserId { get; set; }
     public User User { get; set; } = null!;
