@@ -7,9 +7,9 @@ using Models.Orders;
 [PrimaryKey(nameof(BuildId), nameof(OrderId))]
 public class BuildBridge
 {
-    public int BuildId { get; set; }
+    public Guid BuildId { get; set; }
     public Build Build { get; set; } = null!;
 
-    public int OrderId { get; set; }
+    public Guid OrderId { get; set; }
     public Order Order { get; set; } = null!;
 }

@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class StickerSeeder
 {
-    public const int PcMasterRaceId = 30;
-    public const int RgbLogoId = 31;
-    public const int TechStickerId = 32;
+    public static readonly Guid PcMasterRaceId = Guid.Parse("00000000-0000-0000-0000-000000000030");
+    public static readonly Guid RgbLogoId = Guid.Parse("00000000-0000-0000-0000-000000000031");
+    public static readonly Guid TechStickerId = Guid.Parse("00000000-0000-0000-0000-000000000032");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class StickerSeeder
         context.Stickers.AddRange(
             new Sticker
             {
-                ComponentId = PcMasterRaceId,
+                Id = PcMasterRaceId,
                 Name = "PC Master Race Glorious Sticker",
                 Brand = "PCMR",
                 Model = "Glorious Sticker",
@@ -34,7 +34,7 @@ public static class StickerSeeder
             },
             new Sticker
             {
-                ComponentId = RgbLogoId,
+                Id = RgbLogoId,
                 Name = "RGB Rainbow Logo Sticker",
                 Brand = "RGB",
                 Model = "Rainbow Logo Sticker",
@@ -49,7 +49,7 @@ public static class StickerSeeder
             },
             new Sticker
             {
-                ComponentId = TechStickerId,
+                Id = TechStickerId,
                 Name = "Tech Circuit Board Sticker",
                 Brand = "Tech",
                 Model = "Circuit Board Sticker",

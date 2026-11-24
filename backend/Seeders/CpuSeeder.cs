@@ -5,10 +5,10 @@ using Models.Components;
 
 public static class CpuSeeder
 {
-    public const int I9_14900KId = 1;
-    public const int I7_14700KId = 2;
-    public const int Ryzen9_7950XId = 3;
-    public const int Ryzen7_7800X3DId = 4;
+    public static readonly Guid I9_14900KId = Guid.Parse("00000000-0000-0000-0000-000000000001");
+    public static readonly Guid I7_14700KId = Guid.Parse("00000000-0000-0000-0000-000000000002");
+    public static readonly Guid Ryzen9_7950XId = Guid.Parse("00000000-0000-0000-0000-000000000003");
+    public static readonly Guid Ryzen7_7800X3DId = Guid.Parse("00000000-0000-0000-0000-000000000004");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -20,7 +20,7 @@ public static class CpuSeeder
         context.CPUs.AddRange(
             new CPU
             {
-                ComponentId = I9_14900KId,
+                Id = I9_14900KId,
                 Name = "Intel Core i9-14900K",
                 Brand = "Intel",
                 Model = "Core i9-14900K",
@@ -41,7 +41,7 @@ public static class CpuSeeder
             },
             new CPU
             {
-                ComponentId = I7_14700KId,
+                Id = I7_14700KId,
                 Name = "Intel Core i7-14700K",
                 Brand = "Intel",
                 Model = "Core i7-14700K",
@@ -62,7 +62,7 @@ public static class CpuSeeder
             },
             new CPU
             {
-                ComponentId = Ryzen9_7950XId,
+                Id = Ryzen9_7950XId,
                 Name = "AMD Ryzen 9 7950X",
                 Brand = "AMD",
                 Model = "Ryzen 9 7950X",
@@ -82,7 +82,7 @@ public static class CpuSeeder
             },
             new CPU
             {
-                ComponentId = Ryzen7_7800X3DId,
+                Id = Ryzen7_7800X3DId,
                 Name = "AMD Ryzen 7 7800X3D",
                 Brand = "AMD",
                 Model = "Ryzen 7 7800X3D",

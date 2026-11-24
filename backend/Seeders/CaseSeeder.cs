@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class CaseSeeder
 {
-    public const int O11DynamicId = 19;
-    public const int Corsair4000DId = 20;
-    public const int Nr200Id = 21;
+    public static readonly Guid O11DynamicId = Guid.Parse("00000000-0000-0000-0000-000000000019");
+    public static readonly Guid Corsair4000DId = Guid.Parse("00000000-0000-0000-0000-000000000020");
+    public static readonly Guid Nr200Id = Guid.Parse("00000000-0000-0000-0000-000000000021");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class CaseSeeder
         context.Cases.AddRange(
             new Case
             {
-                ComponentId = O11DynamicId,
+                Id = O11DynamicId,
                 Name = "Lian Li O11 Dynamic EVO",
                 Brand = "Lian Li",
                 Model = "O11 Dynamic EVO",
@@ -38,7 +38,7 @@ public static class CaseSeeder
             },
             new Case
             {
-                ComponentId = Corsair4000DId,
+                Id = Corsair4000DId,
                 Name = "Corsair 4000D Airflow",
                 Brand = "Corsair",
                 Model = "4000D Airflow",
@@ -57,7 +57,7 @@ public static class CaseSeeder
             },
             new Case
             {
-                ComponentId = Nr200Id,
+                Id = Nr200Id,
                 Name = "Cooler Master MasterBox NR200",
                 Brand = "Cooler Master",
                 Model = "MasterBox NR200",

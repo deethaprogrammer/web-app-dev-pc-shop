@@ -5,9 +5,9 @@ using Models.Identity;
 
 public static class UserSeeder
 {
-    public const int AdminId = 1;
-    public const int JohnId = 2;
-    public const int JaneId = 3;
+    public static readonly Guid AdminId = Guid.Parse("10000000-0000-0000-0000-000000000001");
+    public static readonly Guid JohnId = Guid.Parse("10000000-0000-0000-0000-000000000002");
+    public static readonly Guid JaneId = Guid.Parse("10000000-0000-0000-0000-000000000003");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class UserSeeder
         context.Users.AddRange(
             new User
             {
-                UserId = AdminId,
+                Id = AdminId,
                 Name = "Administrator",
                 Username = "admin",
                 EmailAddress = "admin@pcshop.local",
@@ -29,7 +29,7 @@ public static class UserSeeder
             },
             new User
             {
-                UserId = JohnId,
+                Id = JohnId,
                 Name = "John Doe",
                 Username = "john_doe",
                 EmailAddress = "john@example.com",
@@ -39,7 +39,7 @@ public static class UserSeeder
             },
             new User
             {
-                UserId = JaneId,
+                Id = JaneId,
                 Name = "Jane Doe",
                 Username = "jane_doe",
                 EmailAddress = "jane@example.com",

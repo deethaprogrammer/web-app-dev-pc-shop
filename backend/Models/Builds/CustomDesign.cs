@@ -12,13 +12,13 @@ public class CustomDesign : IEntity
     [Required]
     public string Name { get; set; } = null!;
 
-    public int CaseComponentId { get; set; }
+    public Guid CaseComponentId { get; set; }
     public Case CaseComponent { get; set; } = null!;
 
-    public int StickerId { get; set; }
+    public Guid StickerId { get; set; }
     public Sticker Sticker { get; set; } = null!;
 
-    public int BuildId { get; set; }
+    public Guid BuildId { get; set; }
     public Build Build { get; set; } = null!;
 
     [Required]

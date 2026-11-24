@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class CoolingSeeder
 {
-    public const int NhD15Id = 22;
-    public const int Kraken360Id = 23;
-    public const int Hyper212Id = 24;
+    public static readonly Guid NhD15Id = Guid.Parse("00000000-0000-0000-0000-000000000022");
+    public static readonly Guid Kraken360Id = Guid.Parse("00000000-0000-0000-0000-000000000023");
+    public static readonly Guid Hyper212Id = Guid.Parse("00000000-0000-0000-0000-000000000024");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class CoolingSeeder
         context.Coolings.AddRange(
             new Cooling
             {
-                ComponentId = NhD15Id,
+                Id = NhD15Id,
                 Name = "Noctua NH-D15 chromax.Black",
                 Brand = "Noctua",
                 Model = "NH-D15 chromax.Black",
@@ -34,7 +34,7 @@ public static class CoolingSeeder
             },
             new Cooling
             {
-                ComponentId = Kraken360Id,
+                Id = Kraken360Id,
                 Name = "NZXT Kraken 360 RGB",
                 Brand = "NZXT",
                 Model = "Kraken 360 RGB",
@@ -49,7 +49,7 @@ public static class CoolingSeeder
             },
             new Cooling
             {
-                ComponentId = Hyper212Id,
+                Id = Hyper212Id,
                 Name = "Cooler Master Hyper 212 Black Edition",
                 Brand = "Cooler Master",
                 Model = "Hyper 212 Black Edition",

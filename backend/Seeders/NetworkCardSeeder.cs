@@ -5,8 +5,8 @@ using Models.Components;
 
 public static class NetworkCardSeeder
 {
-    public const int Ax210Id = 28;
-    public const int Ax200Id = 29;
+    public static readonly Guid Ax210Id = Guid.Parse("00000000-0000-0000-0000-000000000028");
+    public static readonly Guid Ax200Id = Guid.Parse("00000000-0000-0000-0000-000000000029");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -18,7 +18,7 @@ public static class NetworkCardSeeder
         context.NetworkCards.AddRange(
             new NetworkCard
             {
-                ComponentId = Ax210Id,
+                Id = Ax210Id,
                 Name = "Intel Wi-Fi 6E AX210",
                 Brand = "Intel",
                 Model = "Wi-Fi 6E AX210",
@@ -35,7 +35,7 @@ public static class NetworkCardSeeder
             },
             new NetworkCard
             {
-                ComponentId = Ax200Id,
+                Id = Ax200Id,
                 Name = "Intel Wi-Fi 6 AX200",
                 Brand = "Intel",
                 Model = "Wi-Fi 6 AX200",

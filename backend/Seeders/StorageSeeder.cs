@@ -5,10 +5,10 @@ using Models.Components;
 
 public static class StorageSeeder
 {
-    public const int Samsung990Pro1TbId = 15;
-    public const int Sn850x2TbId = 16;
-    public const int Barracuda4TbId = 17;
-    public const int Samsung870Evo1TbId = 18;
+    public static readonly Guid Samsung990Pro1TbId = Guid.Parse("00000000-0000-0000-0000-000000000015");
+    public static readonly Guid Sn850x2TbId = Guid.Parse("00000000-0000-0000-0000-000000000016");
+    public static readonly Guid Barracuda4TbId = Guid.Parse("00000000-0000-0000-0000-000000000017");
+    public static readonly Guid Samsung870Evo1TbId = Guid.Parse("00000000-0000-0000-0000-000000000018");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -20,7 +20,7 @@ public static class StorageSeeder
         context.Storages.AddRange(
             new Storage
             {
-                ComponentId = Samsung990Pro1TbId,
+                Id = Samsung990Pro1TbId,
                 Name = "Samsung 990 PRO 1TB NVMe SSD",
                 Brand = "Samsung",
                 Model = "990 PRO 1TB NVMe SSD",
@@ -39,7 +39,7 @@ public static class StorageSeeder
             },
             new Storage
             {
-                ComponentId = Sn850x2TbId,
+                Id = Sn850x2TbId,
                 Name = "WD_BLACK SN850X 2TB NVMe SSD",
                 Brand = "Western Digital",
                 Model = "WD_BLACK SN850X 2TB NVMe SSD",
@@ -58,7 +58,7 @@ public static class StorageSeeder
             },
             new Storage
             {
-                ComponentId = Barracuda4TbId,
+                Id = Barracuda4TbId,
                 Name = "Seagate Barracuda 4TB HDD",
                 Brand = "Seagate",
                 Model = "Barracuda 4TB HDD",
@@ -77,7 +77,7 @@ public static class StorageSeeder
             },
             new Storage
             {
-                ComponentId = Samsung870Evo1TbId,
+                Id = Samsung870Evo1TbId,
                 Name = "Samsung 870 EVO 1TB SATA SSD",
                 Brand = "Samsung",
                 Model = "870 EVO 1TB SATA SSD",

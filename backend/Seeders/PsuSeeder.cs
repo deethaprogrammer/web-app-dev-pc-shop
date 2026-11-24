@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class PsuSeeder
 {
-    public const int Rm1000XId = 25;
-    public const int FocusGx850Id = 26;
-    public const int Cx750Id = 27;
+    public static readonly Guid Rm1000XId = Guid.Parse("00000000-0000-0000-0000-000000000025");
+    public static readonly Guid FocusGx850Id = Guid.Parse("00000000-0000-0000-0000-000000000026");
+    public static readonly Guid Cx750Id = Guid.Parse("00000000-0000-0000-0000-000000000027");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class PsuSeeder
         context.PSUs.AddRange(
             new PSU
             {
-                ComponentId = Rm1000XId,
+                Id = Rm1000XId,
                 Name = "Corsair RM1000x SHIFT",
                 Brand = "Corsair",
                 Model = "RM1000x SHIFT",
@@ -35,7 +35,7 @@ public static class PsuSeeder
             },
             new PSU
             {
-                ComponentId = FocusGx850Id,
+                Id = FocusGx850Id,
                 Name = "Seasonic FOCUS GX-850",
                 Brand = "Seasonic",
                 Model = "FOCUS GX-850",
@@ -51,7 +51,7 @@ public static class PsuSeeder
             },
             new PSU
             {
-                ComponentId = Cx750Id,
+                Id = Cx750Id,
                 Name = "Corsair CX750M",
                 Brand = "Corsair",
                 Model = "CX750M",

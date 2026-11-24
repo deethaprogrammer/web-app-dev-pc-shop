@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class RamSeeder
 {
-    public const int Ddr5_32GbId = 12;
-    public const int Ddr5_64GbId = 13;
-    public const int Ddr4_32GbId = 14;
+    public static readonly Guid Ddr5_32GbId = Guid.Parse("00000000-0000-0000-0000-000000000012");
+    public static readonly Guid Ddr5_64GbId = Guid.Parse("00000000-0000-0000-0000-000000000013");
+    public static readonly Guid Ddr4_32GbId = Guid.Parse("00000000-0000-0000-0000-000000000014");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class RamSeeder
         context.RAMs.AddRange(
             new RAM
             {
-                ComponentId = Ddr5_32GbId,
+                Id = Ddr5_32GbId,
                 Name = "Corsair Vengeance DDR5 32GB 6000MHz",
                 Brand = "Corsair",
                 Model = "Vengeance DDR5 32GB (2x16GB) 6000MHz",
@@ -37,7 +37,7 @@ public static class RamSeeder
             },
             new RAM
             {
-                ComponentId = Ddr5_64GbId,
+                Id = Ddr5_64GbId,
                 Name = "G.Skill Trident Z5 RGB 64GB 6400MHz",
                 Brand = "G.Skill",
                 Model = "Trident Z5 RGB 64GB (2x32GB) 6400MHz",
@@ -55,7 +55,7 @@ public static class RamSeeder
             },
             new RAM
             {
-                ComponentId = Ddr4_32GbId,
+                Id = Ddr4_32GbId,
                 Name = "Crucial Ballistix DDR4 32GB 3200MHz",
                 Brand = "Crucial",
                 Model = "Ballistix DDR4 32GB (2x16GB) 3200MHz",

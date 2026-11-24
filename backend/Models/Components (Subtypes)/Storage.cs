@@ -18,7 +18,7 @@ public class Storage : PcComponent
     {
         ComponentType = "Storage";
     }
-    public int FormFactorId { get; set; }
+    public Guid FormFactorId { get; set; }
 
     public StorageFormFactor FormFactor { get; set; } = null!;
 

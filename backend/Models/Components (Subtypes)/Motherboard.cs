@@ -10,7 +10,7 @@ public class Motherboard : PcComponent
     {
         ComponentType = "Motherboard";
     }
-    public int FormFactorId { get; set; }
+    public Guid FormFactorId { get; set; }
 
     public BoardFormFactor FormFactor { get; set; } = null!;
 

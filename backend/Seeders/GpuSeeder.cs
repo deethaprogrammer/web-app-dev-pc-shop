@@ -5,10 +5,10 @@ using Models.Components;
 
 public static class GpuSeeder
 {
-    public const int Rtx4090Id = 5;
-    public const int Rtx4080Id = 6;
-    public const int Rx7900XtxId = 7;
-    public const int Rtx4070Id = 8;
+    public static readonly Guid Rtx4090Id = Guid.Parse("00000000-0000-0000-0000-000000000005");
+    public static readonly Guid Rtx4080Id = Guid.Parse("00000000-0000-0000-0000-000000000006");
+    public static readonly Guid Rx7900XtxId = Guid.Parse("00000000-0000-0000-0000-000000000007");
+    public static readonly Guid Rtx4070Id = Guid.Parse("00000000-0000-0000-0000-000000000008");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -20,7 +20,7 @@ public static class GpuSeeder
         context.GPUs.AddRange(
             new GPU
             {
-                ComponentId = Rtx4090Id,
+                Id = Rtx4090Id,
                 Name = "NVIDIA GeForce RTX 4090",
                 Brand = "NVIDIA",
                 Model = "GeForce RTX 4090",
@@ -47,7 +47,7 @@ public static class GpuSeeder
             },
             new GPU
             {
-                ComponentId = Rtx4080Id,
+                Id = Rtx4080Id,
                 Name = "NVIDIA GeForce RTX 4080",
                 Brand = "NVIDIA",
                 Model = "GeForce RTX 4080",
@@ -74,7 +74,7 @@ public static class GpuSeeder
             },
             new GPU
             {
-                ComponentId = Rx7900XtxId,
+                Id = Rx7900XtxId,
                 Name = "AMD Radeon RX 7900 XTX",
                 Brand = "AMD",
                 Model = "Radeon RX 7900 XTX",
@@ -100,7 +100,7 @@ public static class GpuSeeder
             },
             new GPU
             {
-                ComponentId = Rtx4070Id,
+                Id = Rtx4070Id,
                 Name = "NVIDIA GeForce RTX 4070",
                 Brand = "NVIDIA",
                 Model = "GeForce RTX 4070",

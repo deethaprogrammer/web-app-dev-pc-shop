@@ -5,8 +5,8 @@ using Models.Builds;
 
 public static class BuildSeeder
 {
-    public const int GamingBuildId = 1;
-    public const int WorkstationBuildId = 2;
+    public static readonly Guid GamingBuildId = Guid.Parse("40000000-0000-0000-0000-000000000001");
+    public static readonly Guid WorkstationBuildId = Guid.Parse("40000000-0000-0000-0000-000000000002");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -17,7 +17,7 @@ public static class BuildSeeder
 
         var gamingBuild = new Build
         {
-            BuildId = GamingBuildId,
+            Id = GamingBuildId,
             UserId = UserSeeder.JohnId,
             Name = "Ultimate Gaming Rig",
             CalculatedPrice = 3249.90m
@@ -25,7 +25,7 @@ public static class BuildSeeder
 
         var workstationBuild = new Build
         {
-            BuildId = WorkstationBuildId,
+            Id = WorkstationBuildId,
             UserId = UserSeeder.JaneId,
             Name = "Content Creation Workstation",
             CalculatedPrice = 2849.92m
@@ -59,15 +59,15 @@ public static class BuildSeeder
             (PsuSeeder.FocusGx850Id, 1)
         };
 
-        AddComponents(context, gamingBuild.BuildId, gamingComponents);
-        AddComponents(context, workstationBuild.BuildId, workstationComponents);
+        AddComponents(context, gamingBuild.Id, gamingComponents);
+        AddComponents(context, workstationBuild.Id, workstationComponents);
 
         context.CustomDesigns.AddRange(
             new CustomDesign
             {
-                CustomDesignId = 1,
+                Id = Guid.Parse("60000000-0000-0000-0000-000000000001"),
                 Name = "Front PCMR Sticker",
-                BuildId = gamingBuild.BuildId,
+                BuildId = gamingBuild.Id,
                 CaseComponentId = CaseSeeder.O11DynamicId,
                 StickerId = StickerSeeder.PcMasterRaceId,
                 SideLocation = "Front",
@@ -80,7 +80,7 @@ public static class BuildSeeder
         await context.SaveChangesAsync();
     }
 
-    private static void AddComponents(AppDbContext context, int buildId, IEnumerable<(int ComponentId, int Quantity)> components)
+    private static void AddComponents(AppDbContext context, Guid buildId, IEnumerable<(Guid ComponentId, int Quantity)> components)
     {
         foreach (var (componentId, quantity) in components)
         {

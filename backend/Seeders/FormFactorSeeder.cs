@@ -5,15 +5,15 @@ using Models.FormFactor;
 
 public static class FormFactorSeeder
 {
-    public const int AtxId = 1;
-    public const int MicroAtxId = 2;
-    public const int MiniItxId = 3;
-    public const int EAtxId = 4;
+    public static readonly Guid AtxId = Guid.Parse("20000000-0000-0000-0000-000000000001");
+    public static readonly Guid MicroAtxId = Guid.Parse("20000000-0000-0000-0000-000000000002");
+    public static readonly Guid MiniItxId = Guid.Parse("20000000-0000-0000-0000-000000000003");
+    public static readonly Guid EAtxId = Guid.Parse("20000000-0000-0000-0000-000000000004");
 
-    public const int Ssd25Id = 1;
-    public const int Ssd35Id = 2;
-    public const int M2_2280Id = 3;
-    public const int M2_22110Id = 4;
+    public static readonly Guid Ssd25Id = Guid.Parse("21000000-0000-0000-0000-000000000001");
+    public static readonly Guid Ssd35Id = Guid.Parse("21000000-0000-0000-0000-000000000002");
+    public static readonly Guid M2_2280Id = Guid.Parse("21000000-0000-0000-0000-000000000003");
+    public static readonly Guid M2_22110Id = Guid.Parse("21000000-0000-0000-0000-000000000004");
 
     public static async Task SeedAsync(AppDbContext context)
     {

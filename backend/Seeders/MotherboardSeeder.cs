@@ -5,9 +5,9 @@ using Models.Components;
 
 public static class MotherboardSeeder
 {
-    public const int Z790HeroId = 9;
-    public const int B650eFId = 10;
-    public const int Z790AId = 11;
+    public static readonly Guid Z790HeroId = Guid.Parse("00000000-0000-0000-0000-000000000009");
+    public static readonly Guid B650eFId = Guid.Parse("00000000-0000-0000-0000-000000000010");
+    public static readonly Guid Z790AId = Guid.Parse("00000000-0000-0000-0000-000000000011");
 
     public static async Task SeedAsync(AppDbContext context)
     {
@@ -19,7 +19,7 @@ public static class MotherboardSeeder
         context.Motherboards.AddRange(
             new Motherboard
             {
-                ComponentId = Z790HeroId,
+                Id = Z790HeroId,
                 Name = "ASUS ROG Maximus Z790 Hero",
                 Brand = "ASUS",
                 Model = "ROG Maximus Z790 Hero",
@@ -40,7 +40,7 @@ public static class MotherboardSeeder
             },
             new Motherboard
             {
-                ComponentId = B650eFId,
+                Id = B650eFId,
                 Name = "Gigabyte B650E AORUS Master",
                 Brand = "Gigabyte",
                 Model = "B650E AORUS Master",
@@ -61,7 +61,7 @@ public static class MotherboardSeeder
             },
             new Motherboard
             {
-                ComponentId = Z790AId,
+                Id = Z790AId,
                 Name = "MSI PRO Z790-A WiFi",
                 Brand = "MSI",
                 Model = "PRO Z790-A WiFi",

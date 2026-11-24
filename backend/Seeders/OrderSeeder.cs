@@ -15,7 +15,7 @@ public static class OrderSeeder
 
         var order1 = new Order
         {
-            OrderId = 1,
+            Id = Guid.Parse("50000000-0000-0000-0000-000000000001"),
             UserId = UserSeeder.JohnId,
             Name = "John's Gaming Rig Order",
             Status = OrderStatus.Shipped,
@@ -28,7 +28,7 @@ public static class OrderSeeder
 
         var order2 = new Order
         {
-            OrderId = 2,
+            Id = Guid.Parse("50000000-0000-0000-0000-000000000002"),
             UserId = UserSeeder.JaneId,
             Name = "Jane's Workstation Order",
             Status = OrderStatus.Processing,
@@ -41,7 +41,7 @@ public static class OrderSeeder
 
         var order3 = new Order
         {
-            OrderId = 3,
+            Id = Guid.Parse("50000000-0000-0000-0000-000000000003"),
             UserId = UserSeeder.AdminId,
             Name = "Admin RTX 4090 Order",
             Status = OrderStatus.Pending,
@@ -56,8 +56,8 @@ public static class OrderSeeder
         await context.SaveChangesAsync();
 
         context.BuildBridges.AddRange(
-            new BuildBridge { BuildId = BuildSeeder.GamingBuildId, OrderId = order1.OrderId },
-            new BuildBridge { BuildId = BuildSeeder.WorkstationBuildId, OrderId = order2.OrderId }
+            new BuildBridge { BuildId = BuildSeeder.GamingBuildId, OrderId = order1.Id },
+            new BuildBridge { BuildId = BuildSeeder.WorkstationBuildId, OrderId = order2.Id }
         );
 
         await context.SaveChangesAsync();
