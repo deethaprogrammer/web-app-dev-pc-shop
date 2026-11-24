@@ -3,7 +3,7 @@
 using Models.Components;
 
 [Table("StorageFormFactor")]
-public class StorageFormFactor
+public class StorageFormFactor : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

@@ -12,11 +12,11 @@ public enum OrderStatus
 }
 
 [Table("Order")]
-public class Order
+public class Order : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int OrderId { get; set; }
+    public Guid Id { get; set; }
 
     public int UserId { get; set; }
     public User User { get; set; } = null!;

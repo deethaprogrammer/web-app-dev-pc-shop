@@ -2,14 +2,11 @@
 
 [Table("User")]
 [Index(nameof(EmailAddress), IsUnique = true)]
-public class User
+public class User : IEntity
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public int UserId { get; set; }
-
-    [Required]
-    public string Name { get; set; } = null!;
+    public Guid Id { get; set; }
 
     [Required]
     public string Username { get; set; } = null!;
