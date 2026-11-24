@@ -6,7 +6,10 @@ public class User
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
+
+    [Required]
+    public string Name { get; set; } = null!;
 
     [Required]
     public string Username { get; set; } = null!;

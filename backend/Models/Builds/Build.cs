@@ -7,9 +7,9 @@ public class Build
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid BuildId { get; set; }
+    public int BuildId { get; set; }
 
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
     public User User { get; set; } = null!;
 
     [Precision(10, 2)]

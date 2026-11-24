@@ -1,5 +1,6 @@
-﻿// using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
@@ -15,7 +16,8 @@ namespace PcShop.Migrations
                 name: "BoardFormFactor",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false),
                     SizeClass = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -28,8 +30,10 @@ namespace PcShop.Migrations
                 name: "PcComponent",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     ComponentType = table.Column<string>(type: "text", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Brand = table.Column<string>(type: "text", nullable: false),
                     Model = table.Column<string>(type: "text", nullable: false),
                     CurrentPrice = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
@@ -48,7 +52,9 @@ namespace PcShop.Migrations
                 name: "Port",
                 columns: table => new
                 {
-                    PortId = table.Column<Guid>(type: "uuid", nullable: false),
+                    PortId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
                     Version = table.Column<string>(type: "text", nullable: true)
                 },
@@ -61,7 +67,8 @@ namespace PcShop.Migrations
                 name: "StorageFormFactor",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
@@ -73,7 +80,9 @@ namespace PcShop.Migrations
                 name: "User",
                 columns: table => new
                 {
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    UserId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Username = table.Column<string>(type: "text", nullable: false),
                     EmailAddress = table.Column<string>(type: "text", nullable: false),
                     PasswordHash = table.Column<string>(type: "text", nullable: false),
@@ -89,8 +98,8 @@ namespace PcShop.Migrations
                 name: "Case",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FormFactorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
+                    FormFactorId = table.Column<int>(type: "integer", nullable: false),
                     Color = table.Column<string>(type: "text", nullable: false),
                     PanelType = table.Column<string>(type: "text", nullable: false),
                     CableManagement = table.Column<string>(type: "text", nullable: true),
@@ -118,7 +127,7 @@ namespace PcShop.Migrations
                 name: "Cooling",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
                     HeightMm = table.Column<int>(type: "integer", nullable: true)
                 },
@@ -137,7 +146,7 @@ namespace PcShop.Migrations
                 name: "CPU",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     Cores = table.Column<int>(type: "integer", nullable: false),
                     PerformanceCores = table.Column<int>(type: "integer", nullable: true),
                     Threads = table.Column<int>(type: "integer", nullable: false),
@@ -162,7 +171,7 @@ namespace PcShop.Migrations
                 name: "GPU",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     VulkanVersion = table.Column<double>(type: "double precision", precision: 10, scale: 1, nullable: false),
                     OpenglVersion = table.Column<double>(type: "double precision", precision: 10, scale: 1, nullable: true),
                     CudaCores = table.Column<int>(type: "integer", nullable: true),
@@ -193,8 +202,8 @@ namespace PcShop.Migrations
                 name: "Motherboard",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FormFactorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
+                    FormFactorId = table.Column<int>(type: "integer", nullable: false),
                     Socket = table.Column<string>(type: "text", nullable: false),
                     PcieSlots = table.Column<int>(type: "integer", nullable: false),
                     RamSlots = table.Column<int>(type: "integer", nullable: false),
@@ -224,7 +233,7 @@ namespace PcShop.Migrations
                 name: "NetworkCard",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     WifiType = table.Column<string>(type: "text", nullable: false),
                     BluetoothType = table.Column<string>(type: "text", nullable: true),
                     MaxSpeed = table.Column<int>(type: "integer", nullable: false),
@@ -245,7 +254,7 @@ namespace PcShop.Migrations
                 name: "PSU",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     Wattage = table.Column<int>(type: "integer", nullable: false),
                     Rating = table.Column<string>(type: "text", nullable: true),
                     Modular = table.Column<int>(type: "integer", nullable: false)
@@ -265,7 +274,7 @@ namespace PcShop.Migrations
                 name: "RAM",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<string>(type: "text", nullable: false),
                     Frequency = table.Column<int>(type: "integer", nullable: false),
                     Size = table.Column<int>(type: "integer", nullable: false),
@@ -287,7 +296,7 @@ namespace PcShop.Migrations
                 name: "Sticker",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     WidthMm = table.Column<int>(type: "integer", nullable: false),
                     HeightMm = table.Column<int>(type: "integer", nullable: false)
                 },
@@ -306,12 +315,12 @@ namespace PcShop.Migrations
                 name: "Storage",
                 columns: table => new
                 {
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
-                    FormFactorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
+                    FormFactorId = table.Column<int>(type: "integer", nullable: false),
                     StorageSize = table.Column<int>(type: "integer", nullable: false),
                     Speed = table.Column<int>(type: "integer", nullable: false),
                     Type = table.Column<int>(type: "integer", nullable: false),
-                    Heatsink = table.Column<int>(type: "integer", nullable: true),
+                    HasHeatsink = table.Column<bool>(type: "boolean", nullable: true),
                     Wattage = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -335,8 +344,9 @@ namespace PcShop.Migrations
                 name: "Build",
                 columns: table => new
                 {
-                    BuildId = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    BuildId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
                     CalculatedPrice = table.Column<decimal>(type: "numeric(10,2)", precision: 10, scale: 2, nullable: false),
                     Name = table.Column<string>(type: "text", nullable: false)
                 },
@@ -355,8 +365,10 @@ namespace PcShop.Migrations
                 name: "Order",
                 columns: table => new
                 {
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
+                    OrderId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<int>(type: "integer", nullable: false),
+                    Name = table.Column<string>(type: "text", nullable: false),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -379,8 +391,8 @@ namespace PcShop.Migrations
                 name: "PortsBridge",
                 columns: table => new
                 {
-                    MotherboardId = table.Column<Guid>(type: "uuid", nullable: false),
-                    PortId = table.Column<Guid>(type: "uuid", nullable: false),
+                    MotherboardId = table.Column<int>(type: "integer", nullable: false),
+                    PortId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -404,8 +416,8 @@ namespace PcShop.Migrations
                 name: "BuildComponentBridge",
                 columns: table => new
                 {
-                    BuildId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ComponentId = table.Column<Guid>(type: "uuid", nullable: false),
+                    BuildId = table.Column<int>(type: "integer", nullable: false),
+                    ComponentId = table.Column<int>(type: "integer", nullable: false),
                     Quantity = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
@@ -429,10 +441,12 @@ namespace PcShop.Migrations
                 name: "CustomDesign",
                 columns: table => new
                 {
-                    CustomDesignId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CaseComponentId = table.Column<Guid>(type: "uuid", nullable: false),
-                    StickerId = table.Column<Guid>(type: "uuid", nullable: false),
-                    BuildId = table.Column<Guid>(type: "uuid", nullable: false),
+                    CustomDesignId = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: false),
+                    CaseComponentId = table.Column<int>(type: "integer", nullable: false),
+                    StickerId = table.Column<int>(type: "integer", nullable: false),
+                    BuildId = table.Column<int>(type: "integer", nullable: false),
                     SideLocation = table.Column<string>(type: "text", nullable: false),
                     XAxis = table.Column<int>(type: "integer", nullable: false),
                     YAxis = table.Column<int>(type: "integer", nullable: false),
@@ -465,8 +479,8 @@ namespace PcShop.Migrations
                 name: "BuildBridge",
                 columns: table => new
                 {
-                    BuildId = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false)
+                    BuildId = table.Column<int>(type: "integer", nullable: false),
+                    OrderId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {

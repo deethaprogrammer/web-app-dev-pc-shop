@@ -1,6 +1,7 @@
 ﻿namespace PcShop;
 
 using Data;
+using Seeders;
 
 public class Program
 {
@@ -14,6 +15,7 @@ public class Program
 
         s_app = s_builder.Build();
         await RunMigrations();
+        await SeedData();
         EnableSwagger();
 
         s_app.UseHttpsRedirection();
@@ -65,11 +67,23 @@ public class Program
         {
             return;
         }
-        var scope = s_app.Services.CreateScope();
+        using var scope = s_app.Services.CreateScope();
         var db = scope.ServiceProvider
             .GetRequiredService<AppDbContext>();
 
         await db.Database.MigrateAsync();
+    }
+
+    private static async Task SeedData()
+    {
+        if (s_app == null)
+        {
+            return;
+        }
+        using var scope = s_app.Services.CreateScope();
+        var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+        await DbSeeder.SeedAsync(db);
     }
 
     record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)

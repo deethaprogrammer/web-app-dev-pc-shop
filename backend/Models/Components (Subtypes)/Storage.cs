@@ -3,6 +3,14 @@
 using Models.Base;
 using Models.FormFactor;
 
+public enum StorageType
+{
+    Ssd = 0,
+    Hdd = 1,
+    Nvme = 2,
+    Sshd = 3
+}
+
 [Table("Storage")]
 public class Storage : PcComponent
 {
@@ -10,7 +18,7 @@ public class Storage : PcComponent
     {
         ComponentType = "Storage";
     }
-    public Guid FormFactorId { get; set; }
+    public int FormFactorId { get; set; }
 
     public StorageFormFactor FormFactor { get; set; } = null!;
 
@@ -18,9 +26,9 @@ public class Storage : PcComponent
 
     public int Speed { get; set; }
 
-    public int Type { get; set; }
+    public StorageType Type { get; set; }
 
-    public int? Heatsink { get; set; }
+    public bool? HasHeatsink { get; set; }
 
     public int Wattage { get; set; }
 

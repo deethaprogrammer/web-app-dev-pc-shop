@@ -6,11 +6,14 @@ public abstract class PcComponent
     // unique ID, shared with the subtype table
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid ComponentId { get; set; }
+    public int ComponentId { get; set; }
 
     // kind of part, e.g. "CPU", "GPU", "Sticker"
     [Required]
     public string ComponentType { get; protected set; } = null!;
+
+    [Required]
+    public string Name { get; set; } = null!;
 
     [Required]
     public string Brand { get; set; } = null!;

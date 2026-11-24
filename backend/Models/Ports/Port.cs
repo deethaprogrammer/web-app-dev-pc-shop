@@ -5,7 +5,10 @@ public class Port
 {
     [Key]
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-    public Guid PortId { get; set; }
+    public int PortId { get; set; }
+
+    [Required]
+    public string Name { get; set; } = null!;
 
     [Required]
     public string Type { get; set; } = null!;
