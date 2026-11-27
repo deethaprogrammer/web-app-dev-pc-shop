@@ -2,6 +2,13 @@
 
 using Models.Base;
 
+public enum ModularType
+{
+    NonModular = 0,
+    SemiModular = 1,
+    FullModular = 2
+}
+
 [Table("PSU")]
 public class PSU : PcComponent
 {
@@ -14,5 +21,5 @@ public class PSU : PcComponent
 
     public string? Rating { get; set; }
 
-    public int Modular { get; set; }
+    public ModularType Modular { get; set; }
 }

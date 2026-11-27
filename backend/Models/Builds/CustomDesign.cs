@@ -9,6 +9,9 @@ public class CustomDesign : IEntity
     [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
     public Guid Id { get; set; }
 
+    [Required]
+    public string Name { get; set; } = null!;
+
     public Guid CaseComponentId { get; set; }
     public Case CaseComponent { get; set; } = null!;
 

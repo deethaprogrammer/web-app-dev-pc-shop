@@ -22,11 +22,13 @@ namespace PcShop.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("backend.models.Base.PcComponent", b =>
+            modelBuilder.Entity("PcShop.Models.Base.PcComponent", b =>
                 {
-                    b.Property<Guid>("ComponentId")
+                    b.Property<int>("ComponentId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ComponentId"));
 
                     b.Property<string>("Brand")
                         .IsRequired()
@@ -55,6 +57,10 @@ namespace PcShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("ReleaseYear")
                         .HasColumnType("integer");
 
@@ -68,11 +74,13 @@ namespace PcShop.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("backend.models.Builds.Build", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.Build", b =>
                 {
-                    b.Property<Guid>("BuildId")
+                    b.Property<int>("BuildId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("BuildId"));
 
                     b.Property<decimal>("CalculatedPrice")
                         .HasPrecision(10, 2)
@@ -82,8 +90,8 @@ namespace PcShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.HasKey("BuildId");
 
@@ -92,13 +100,13 @@ namespace PcShop.Migrations
                     b.ToTable("Build");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.BuildBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.BuildBridge", b =>
                 {
-                    b.Property<Guid>("BuildId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("BuildId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("OrderId")
+                        .HasColumnType("integer");
 
                     b.HasKey("BuildId", "OrderId");
 
@@ -107,13 +115,13 @@ namespace PcShop.Migrations
                     b.ToTable("BuildBridge");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.BuildComponentBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.BuildComponentBridge", b =>
                 {
-                    b.Property<Guid>("BuildId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("BuildId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("ComponentId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("ComponentId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
@@ -125,17 +133,23 @@ namespace PcShop.Migrations
                     b.ToTable("BuildComponentBridge");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.CustomDesign", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.CustomDesign", b =>
                 {
-                    b.Property<Guid>("CustomDesignId")
+                    b.Property<int>("CustomDesignId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("BuildId")
-                        .HasColumnType("uuid");
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("CustomDesignId"));
 
-                    b.Property<Guid>("CaseComponentId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("BuildId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("CaseComponentId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<int>("RotationDegree")
                         .HasColumnType("integer");
@@ -144,8 +158,8 @@ namespace PcShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("StickerId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("StickerId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("XAxis")
                         .HasColumnType("integer");
@@ -164,11 +178,13 @@ namespace PcShop.Migrations
                     b.ToTable("CustomDesign");
                 });
 
-            modelBuilder.Entity("backend.models.FormFactor.BoardFormFactor", b =>
+            modelBuilder.Entity("PcShop.Models.FormFactor.BoardFormFactor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -182,11 +198,13 @@ namespace PcShop.Migrations
                     b.ToTable("BoardFormFactor");
                 });
 
-            modelBuilder.Entity("backend.models.FormFactor.StorageFormFactor", b =>
+            modelBuilder.Entity("PcShop.Models.FormFactor.StorageFormFactor", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -197,16 +215,22 @@ namespace PcShop.Migrations
                     b.ToTable("StorageFormFactor");
                 });
 
-            modelBuilder.Entity("backend.models.Identity.User", b =>
+            modelBuilder.Entity("PcShop.Models.Identity.User", b =>
                 {
-                    b.Property<Guid>("UserId")
+                    b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("UserId"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("EmailAddress")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text");
 
@@ -229,14 +253,20 @@ namespace PcShop.Migrations
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("backend.models.Orders.Order", b =>
+            modelBuilder.Entity("PcShop.Models.Orders.Order", b =>
                 {
-                    b.Property<Guid>("OrderId")
+                    b.Property<int>("OrderId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("OrderId"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<decimal>("Price")
                         .HasPrecision(10, 2)
@@ -252,8 +282,8 @@ namespace PcShop.Migrations
                     b.Property<DateTime>("UpdatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Warranty")
                         .HasColumnType("integer");
@@ -265,11 +295,17 @@ namespace PcShop.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("backend.models.Ports.Port", b =>
+            modelBuilder.Entity("PcShop.Models.Ports.Port", b =>
                 {
-                    b.Property<Guid>("PortId")
+                    b.Property<int>("PortId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("PortId"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -283,13 +319,13 @@ namespace PcShop.Migrations
                     b.ToTable("Port");
                 });
 
-            modelBuilder.Entity("backend.models.Ports.PortsBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Ports.PortsBridge", b =>
                 {
-                    b.Property<Guid>("MotherboardId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("MotherboardId")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("PortId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("PortId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("integer");
@@ -301,9 +337,9 @@ namespace PcShop.Migrations
                     b.ToTable("PortsBridge");
                 });
 
-            modelBuilder.Entity("backend.models.Components.CPU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.CPU", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<int>("Cache")
                         .HasColumnType("integer");
@@ -333,9 +369,9 @@ namespace PcShop.Migrations
                     b.ToTable("CPU");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Case", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Case", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<string>("CableManagement")
                         .HasColumnType("text");
@@ -344,8 +380,8 @@ namespace PcShop.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<Guid>("FormFactorId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("FormFactorId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("MaxCpuCoolerHeightMm")
                         .HasColumnType("integer");
@@ -362,9 +398,9 @@ namespace PcShop.Migrations
                     b.ToTable("Case");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Cooling", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Cooling", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<int?>("HeightMm")
                         .HasColumnType("integer");
@@ -376,9 +412,9 @@ namespace PcShop.Migrations
                     b.ToTable("Cooling");
                 });
 
-            modelBuilder.Entity("backend.models.Components.GPU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.GPU", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<bool>("BiosLock")
                         .HasColumnType("boolean");
@@ -429,12 +465,12 @@ namespace PcShop.Migrations
                     b.ToTable("GPU");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Motherboard", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Motherboard", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
-                    b.Property<Guid>("FormFactorId")
-                        .HasColumnType("uuid");
+                    b.Property<int>("FormFactorId")
+                        .HasColumnType("integer");
 
                     b.Property<int>("MaxRamCapacityGb")
                         .HasColumnType("integer");
@@ -464,9 +500,9 @@ namespace PcShop.Migrations
                     b.ToTable("Motherboard");
                 });
 
-            modelBuilder.Entity("backend.models.Components.NetworkCard", b =>
+            modelBuilder.Entity("PcShop.Models.Components.NetworkCard", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<string>("BluetoothType")
                         .HasColumnType("text");
@@ -484,9 +520,9 @@ namespace PcShop.Migrations
                     b.ToTable("NetworkCard");
                 });
 
-            modelBuilder.Entity("backend.models.Components.PSU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.PSU", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<int>("Modular")
                         .HasColumnType("integer");
@@ -500,9 +536,9 @@ namespace PcShop.Migrations
                     b.ToTable("PSU");
                 });
 
-            modelBuilder.Entity("backend.models.Components.RAM", b =>
+            modelBuilder.Entity("PcShop.Models.Components.RAM", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<string>("Color")
                         .HasColumnType("text");
@@ -523,9 +559,9 @@ namespace PcShop.Migrations
                     b.ToTable("RAM");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Sticker", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Sticker", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
                     b.Property<int>("HeightMm")
                         .HasColumnType("integer");
@@ -536,15 +572,15 @@ namespace PcShop.Migrations
                     b.ToTable("Sticker");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Storage", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Storage", b =>
                 {
-                    b.HasBaseType("backend.models.Base.PcComponent");
+                    b.HasBaseType("PcShop.Models.Base.PcComponent");
 
-                    b.Property<Guid>("FormFactorId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int?>("Heatsink")
+                    b.Property<int>("FormFactorId")
                         .HasColumnType("integer");
+
+                    b.Property<bool?>("HasHeatsink")
+                        .HasColumnType("boolean");
 
                     b.Property<int>("Speed")
                         .HasColumnType("integer");
@@ -563,9 +599,9 @@ namespace PcShop.Migrations
                     b.ToTable("Storage");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.Build", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.Build", b =>
                 {
-                    b.HasOne("backend.models.Identity.User", "User")
+                    b.HasOne("PcShop.Models.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -574,15 +610,15 @@ namespace PcShop.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.BuildBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.BuildBridge", b =>
                 {
-                    b.HasOne("backend.models.Builds.Build", "Build")
+                    b.HasOne("PcShop.Models.Builds.Build", "Build")
                         .WithMany()
                         .HasForeignKey("BuildId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.Orders.Order", "Order")
+                    b.HasOne("PcShop.Models.Orders.Order", "Order")
                         .WithMany()
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -593,15 +629,15 @@ namespace PcShop.Migrations
                     b.Navigation("Order");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.BuildComponentBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.BuildComponentBridge", b =>
                 {
-                    b.HasOne("backend.models.Builds.Build", "Build")
+                    b.HasOne("PcShop.Models.Builds.Build", "Build")
                         .WithMany()
                         .HasForeignKey("BuildId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.Base.PcComponent", "PcComponent")
+                    b.HasOne("PcShop.Models.Base.PcComponent", "PcComponent")
                         .WithMany()
                         .HasForeignKey("ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -612,21 +648,21 @@ namespace PcShop.Migrations
                     b.Navigation("PcComponent");
                 });
 
-            modelBuilder.Entity("backend.models.Builds.CustomDesign", b =>
+            modelBuilder.Entity("PcShop.Models.Builds.CustomDesign", b =>
                 {
-                    b.HasOne("backend.models.Builds.Build", "Build")
+                    b.HasOne("PcShop.Models.Builds.Build", "Build")
                         .WithMany()
                         .HasForeignKey("BuildId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.Components.Case", "CaseComponent")
+                    b.HasOne("PcShop.Models.Components.Case", "CaseComponent")
                         .WithMany()
                         .HasForeignKey("CaseComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.Components.Sticker", "Sticker")
+                    b.HasOne("PcShop.Models.Components.Sticker", "Sticker")
                         .WithMany()
                         .HasForeignKey("StickerId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -639,9 +675,9 @@ namespace PcShop.Migrations
                     b.Navigation("Sticker");
                 });
 
-            modelBuilder.Entity("backend.models.Orders.Order", b =>
+            modelBuilder.Entity("PcShop.Models.Orders.Order", b =>
                 {
-                    b.HasOne("backend.models.Identity.User", "User")
+                    b.HasOne("PcShop.Models.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -650,15 +686,15 @@ namespace PcShop.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("backend.models.Ports.PortsBridge", b =>
+            modelBuilder.Entity("PcShop.Models.Ports.PortsBridge", b =>
                 {
-                    b.HasOne("backend.models.Components.Motherboard", "Motherboard")
+                    b.HasOne("PcShop.Models.Components.Motherboard", "Motherboard")
                         .WithMany()
                         .HasForeignKey("MotherboardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.Ports.Port", "Port")
+                    b.HasOne("PcShop.Models.Ports.Port", "Port")
                         .WithMany()
                         .HasForeignKey("PortId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -669,24 +705,24 @@ namespace PcShop.Migrations
                     b.Navigation("Port");
                 });
 
-            modelBuilder.Entity("backend.models.Components.CPU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.CPU", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.CPU", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.CPU", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.Case", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Case", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.Case", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.Case", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.FormFactor.BoardFormFactor", "FormFactor")
+                    b.HasOne("PcShop.Models.FormFactor.BoardFormFactor", "FormFactor")
                         .WithMany("Cases")
                         .HasForeignKey("FormFactorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -695,33 +731,33 @@ namespace PcShop.Migrations
                     b.Navigation("FormFactor");
                 });
 
-            modelBuilder.Entity("backend.models.Components.Cooling", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Cooling", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.Cooling", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.Cooling", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.GPU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.GPU", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.GPU", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.GPU", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.Motherboard", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Motherboard", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.Motherboard", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.Motherboard", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.FormFactor.BoardFormFactor", "FormFactor")
+                    b.HasOne("PcShop.Models.FormFactor.BoardFormFactor", "FormFactor")
                         .WithMany("Motherboards")
                         .HasForeignKey("FormFactorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -730,51 +766,51 @@ namespace PcShop.Migrations
                     b.Navigation("FormFactor");
                 });
 
-            modelBuilder.Entity("backend.models.Components.NetworkCard", b =>
+            modelBuilder.Entity("PcShop.Models.Components.NetworkCard", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.NetworkCard", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.NetworkCard", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.PSU", b =>
+            modelBuilder.Entity("PcShop.Models.Components.PSU", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.PSU", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.PSU", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.RAM", b =>
+            modelBuilder.Entity("PcShop.Models.Components.RAM", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.RAM", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.RAM", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.Sticker", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Sticker", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.Sticker", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.Sticker", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("backend.models.Components.Storage", b =>
+            modelBuilder.Entity("PcShop.Models.Components.Storage", b =>
                 {
-                    b.HasOne("backend.models.Base.PcComponent", null)
+                    b.HasOne("PcShop.Models.Base.PcComponent", null)
                         .WithOne()
-                        .HasForeignKey("backend.models.Components.Storage", "ComponentId")
+                        .HasForeignKey("PcShop.Models.Components.Storage", "ComponentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("backend.models.FormFactor.StorageFormFactor", "FormFactor")
+                    b.HasOne("PcShop.Models.FormFactor.StorageFormFactor", "FormFactor")
                         .WithMany("Storages")
                         .HasForeignKey("FormFactorId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -783,14 +819,14 @@ namespace PcShop.Migrations
                     b.Navigation("FormFactor");
                 });
 
-            modelBuilder.Entity("backend.models.FormFactor.BoardFormFactor", b =>
+            modelBuilder.Entity("PcShop.Models.FormFactor.BoardFormFactor", b =>
                 {
                     b.Navigation("Cases");
 
                     b.Navigation("Motherboards");
                 });
 
-            modelBuilder.Entity("backend.models.FormFactor.StorageFormFactor", b =>
+            modelBuilder.Entity("PcShop.Models.FormFactor.StorageFormFactor", b =>
                 {
                     b.Navigation("Storages");
                 });

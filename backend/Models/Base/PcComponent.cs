@@ -13,6 +13,9 @@ public abstract class PcComponent : IEntity
     public string ComponentType { get; protected set; } = null!;
 
     [Required]
+    public string Name { get; set; } = null!;
+
+    [Required]
     public string Brand { get; set; } = null!;
 
     [Required]
