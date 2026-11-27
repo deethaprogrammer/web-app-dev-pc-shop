@@ -1,6 +1,7 @@
 ﻿namespace PcShop;
 
 using Data;
+using PcShop.Services.Builds;
 
 public class Program
 {
@@ -11,12 +12,16 @@ public class Program
     {
         s_builder.Services.AddOpenApi();
         s_builder.Services.AddDbContext<AppDbContext>(options => options.UseNpgsql(s_builder.Configuration.GetConnectionString("DefaultConnection")));
+        s_builder.Services.AddControllers();
+        s_builder.Services.AddScoped<IBuildService, BuildService>();
 
         s_app = s_builder.Build();
+
         await RunMigrations();
         EnableSwagger();
 
         s_app.UseHttpsRedirection();
+        s_app.MapControllers();
 
 
         var summaries = new[]
