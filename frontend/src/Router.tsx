@@ -7,6 +7,7 @@ import Community from '#pages/Community';
 import UserProfile from '#pages/UserProfile';
 import MyBuilds from '#pages/MyBuilds';
 import Login from '#pages/Login';
+import CreateAccount from '#pages/CreateAccount';
 
 export default function Router()
 {
@@ -19,6 +20,7 @@ export default function Router()
           <Route path="/UserProfile" element={<UserProfile />} />
           <Route path="/MyBuilds" element={<MyBuilds />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/CreateAccount" element={<CreateAccount />} />
         </Routes>
     )
 }
